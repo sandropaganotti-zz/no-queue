@@ -1,0 +1,11 @@
+application: shaped-apogee-87811
+version: 1
+runtime: php55
+api_version: 1
+
+handlers:
+- url: /.*
+  script: index.php
+
+env_variables:
+  api_key: AIzaSyAY-5IMyzcHmekq1v85tB7Z3QKO_r5YmTo
