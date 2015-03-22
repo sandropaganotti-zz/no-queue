@@ -7,13 +7,14 @@ self.addEventListener('push', function(e) {
     return;
   }
 
-  var data = e.data ? e.data.json() : {};
-  var title = data.title || 'Why you no title?';
-  var message = data.message || 'Hello World!....I guess.';
-
-  return registration.showNotification(title, {
-    body: message,
-    icon: 'images/touch/chrome-touch-icon-192x192.png'
+  return registration.showNotification('It\'s your turn!', {
+    body: 'The waiting is over, we\'re ready to serve you',
+    icon: 'img/noqueue.png'
   });
 
+});
+
+self.addEventListener('notificationclick', function(e) {
+  e.notification.close();
+  clients.openWindow('/');
 });

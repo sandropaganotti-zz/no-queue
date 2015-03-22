@@ -21,26 +21,43 @@
 					{{? }}
 				</p>
 			{{?? true}}
-				<h1>
-					<span class="green-text text-darken-1">
-						{{= it.position }}
-					</span> 
-					to GO!
-				</h1>
-				<p class="flow-text">
-					Hey! While you're waiting you can have a walk, no&nbsp;
-					need to stay in line or to check this page, you'll receive a&nbsp;
-					<span class="green-text text-darken-1">
-						Notification
-					</span>&nbsp;
-					as soon as it's your turn.
-				</p>
-				<p class="flow-text">
-					By the way, here's your queue id:&nbsp;
-					<span class="green-text text-darken-1">
-						{{= it.user_id }}
-					</span>
-				</p>
+				{{? it.position === "1" }}
+					<h1>
+						Urrah!
+					</h1>
+					<p class="flow-text">
+						You're the first in line,&nbsp; 
+						<span class="green-text text-darken-1">
+							if you have received the notification it
+						</span>&nbsp;
+						means it's your turn, otherwise just hold on a little longer!&nbsp; 
+						And just in case you need it, your queue id is:&nbsp; 
+						<span class="green-text text-darken-1">
+							{{= it.user_id }}
+						</span>
+					</p>
+				{{?? true }}
+					<h1>
+						<span class="green-text text-darken-1">
+							{{= it.position }}
+						</span> 
+						&nbsp;to GO!
+					</h1>
+					<p class="flow-text">
+						Hey! While you're waiting you can have a walk, no&nbsp;
+						need to stay in line or to check this page, you'll receive a&nbsp;
+						<span class="green-text text-darken-1">
+							Notification
+						</span>&nbsp;
+						as soon as it's your turn.
+					</p>
+					<p class="flow-text">
+						By the way, here's your queue id:&nbsp;
+						<span class="green-text text-darken-1">
+							{{= it.user_id }}
+						</span>
+					</p>
+				{{? }}
 			{{? }}
 		</div>
 	</div>

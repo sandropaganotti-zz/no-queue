@@ -3,7 +3,7 @@
 (function(win){
 
     var NoQueue = function(endpoint, queue, tpls) {
-        var queue = queue || 'demo-' + Math.random();
+        var queue = queue || localStorage.getItem('last_queue') || 'demo-' + Math.random();
         this.$body = $('#body');
         this.$doc = $(document);
         this.tpls = tpls;
@@ -46,6 +46,7 @@
                         if(data.created){
                             self.user_id = data.user_id;
                             localStorage.setItem('user_id_' + self.state.name, data.user_id);
+                            localStorage.setItem('last_queue', self.state.name);
                         }
                         self.refresh();
                     }

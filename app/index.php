@@ -1,6 +1,4 @@
 <?php
-phpinfo();
-exit;
 
 /* -- Required table structure --
 CREATE TABLE `queues` (
@@ -26,7 +24,7 @@ $domain = 'https://' . $_SERVER['SERVER_NAME'];
 if(preg_match("/^\/queue\/([^\/]+)$/", $path, $params) && $method == 'GET') {
 	
 	$name = $mysqli->real_escape_string($params[1]);
-   $user_id = array_key_exists('user_id', $_GET) ? $mysqli->real_escape_string($_GET['user_id']) : null;
+   	$user_id = array_key_exists('user_id', $_GET) ? $mysqli->real_escape_string($_GET['user_id']) : null;
 	$query = 'SELECT count(*) as size FROM queues WHERE name = "' . $name . '"';
 	$result = $mysqli->query($query);
 	$row = $result->fetch_assoc();
@@ -40,8 +38,8 @@ if(preg_match("/^\/queue\/([^\/]+)$/", $path, $params) && $method == 'GET') {
 	}
 
 	echo json_encode(array(
-   	'name' => $params[1],
-      'size' => $size,
+   		'name' => $params[1],
+      	'size' => $size,
 		'position' => $position,
 		'actions' => array(
 			'subscribe' => $domain . $path,
@@ -78,22 +76,22 @@ elseif(preg_match("/^\/queue\/([^\/]+)\/manage$/", $path, $params) && $method ==
 	$endpoint = $row['endpoint'];
 
 	if($registration_id && $endpoint && getenv('api_key')) {
-		$notification = curl_init($endpoint);
-		curl_setopt($notification, CURLOPT_HTTPHEADER, array(
-			'Content-type: application/json', 
-			'Authorization: key=' . getenv('api_key')
-		));
-		curl_setopt($notification, CURLOPT_POSTFIELDS, 
-			"{\"registration_ids\":[\"" . $registration_id . "\"]}"
-		);
-		curl_setopt($notification, CURLOPT_RETURNTRANSFER, 1);
-		$curl_result = curl_exec($notification);
-		curl_close($notification);
+		$context = [
+		  'http' => [
+		    'method'	=> 	'POST',
+		    'header'	=> 	"Authorization: key=" . getenv('api_key') . "\r\n" .
+							"Content-Type: application/json\r\n",
+		    'content'	=> 	json_encode(array('registration_ids' => array( $registration_id )))
+		  ]
+		];
+		$context = stream_context_create($context);
+		$result = file_get_contents($endpoint, false, $context);
 	}
 
 	echo json_encode(array(
 		'current' => $current,
-		'curl_result' => isset($curl_result) ? $curl_result : null,
+		'push_result' => $result,
+		'auth' => getenv('api_key'),
 		'actions' => array(
 			'next' => $domain . $path,
 			'manage' => $domain . $path

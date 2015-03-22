@@ -66,7 +66,7 @@ module.exports = function(grunt) {
         watch: {
             js: {
                 files: ['source/js/*.js','source/template/*.dot'],
-                tasks: ['dot','uglify:dist']
+                tasks: ['dot','uglify:dist', 'uglify:sw']
             },
             css: {
                 files: ['source/scss/*.scss'],
