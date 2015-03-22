@@ -1,0 +1,30 @@
+<div class="body">
+	<div class="row">
+		<div class="col s12">
+			{{? it.current }}
+				<h1>Serving&nbsp;
+				    <span class="green-text text-darken-1">
+				        {{= it.current }}
+				    </span>        
+				</h1>
+				<p class="flow-text">
+					A notification has been just sent to the person.
+				</p>
+			{{?? true}}
+				<h1>
+					Hooray!
+				</h1>
+				<p class="flow-text">
+					The queue is empty!
+				</p>
+			{{? }}
+		</div>
+	</div>
+	{{? it.current }}
+		<div class="row center">
+			<a class="waves-effect waves-light btn green lighten-2" data-action="next">
+				<i class="mdi-content-send right"></i>next
+			</a>
+		</div>
+	{{? }}
+</div>

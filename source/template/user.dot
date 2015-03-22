@@ -1,0 +1,54 @@
+<div class="body">
+	<div class="row">
+		<div class="col s12">
+			{{? !it.position }}
+				<h1>Hello!</h1>
+				<p class="flow-text">
+					Welcome to No Queue, subscribe to&nbsp; 
+					<span class="green-text text-darken-1 strong">
+						{{= it.name}}
+					</span> and receive a notification when is your turn,&nbsp; 
+					{{? it.size === "0" }}
+						this queue is empty! Subscribe and be the first to be&nbsp;
+						served!
+					{{?? true }}
+						there {{? it.size === "1" }} is only {{?? true}} are {{? }} 
+						<span class="green-text text-darken-1 strong">
+							{{= it.size}}
+						</span> 
+						{{? it.size === "1" }} person {{?? true}} people {{? }} 
+						waiting in this line now.
+					{{? }}
+				</p>
+			{{?? true}}
+				<h1>
+					<span class="green-text text-darken-1">
+						{{= it.position }}
+					</span> 
+					to GO!
+				</h1>
+				<p class="flow-text">
+					Hey! While you're waiting you can have a walk, no&nbsp;
+					need to stay in line or to check this page, you'll receive a&nbsp;
+					<span class="green-text text-darken-1">
+						Notification
+					</span>&nbsp;
+					as soon as it's your turn.
+				</p>
+				<p class="flow-text">
+					By the way, here's your queue id:&nbsp;
+					<span class="green-text text-darken-1">
+						{{= it.user_id }}
+					</span>
+				</p>
+			{{? }}
+		</div>
+	</div>
+	{{? !it.position }}
+		<div class="row center">
+			<a class="waves-effect waves-light btn green lighten-2" data-action="subscribe">
+				<i class="mdi-content-send right"></i>subscribe
+			</a>
+		</div>
+	{{? }}
+</div>

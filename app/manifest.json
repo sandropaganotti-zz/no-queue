@@ -1,0 +1,8 @@
+{  
+  "name": "No Queue",  
+  "short_name": "No Queue",  
+  "start_url": "/index.html",  
+  "display": "standalone",  
+  "gcm_sender_id": "1075559327952",  
+  "gcm_user_visible_only": true  
+}

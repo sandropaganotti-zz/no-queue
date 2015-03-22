@@ -1,0 +1,14 @@
+@import 'materialize';
+
+.center{
+    text-align: center;
+}
+
+.strong{
+    font-weight: bold;
+}
+
+.preloader-container{
+    @extend .center;
+    margin-top: 40px;
+}
