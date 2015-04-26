@@ -3,7 +3,7 @@
 An application to showcase how powerful ServiceWorker and the Physical Web can 
 be when working togheter! 
 
-## How does this works?
+## How does this work?
 
 Here's the idea: a UriBeacon broadcast an URL pointing to a page that 
 installs a ServiceWorker, asks the user for permission to send notification and,
@@ -17,7 +17,7 @@ the desired device.
 
 This wakes up the ServiceWorker (if you're on an Android device even if your 
 browser is not open) and fires a push event that can be used to trigger a 
-Notification to inform the user about an update of the servuice he subscribed.
+Notification to inform the user about an update of the service he subscribed.
 
 Read more on [sandropaganotti.com](http://sandropaganotti.com/2015/04/26/noqueue-an-experiment-with-service-worker-and-the-physical-web/)
 
