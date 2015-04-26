@@ -19,6 +19,8 @@ This wakes up the ServiceWorker (if you're on an Android device even if your
 browser is not open) and fires a push event that can be used to trigger a 
 Notification to inform the user about an update of the servuice he subscribed.
 
+Read more on [sandropaganotti.com](http://sandropaganotti.com/2015/04/26/noqueue-an-experiment-with-service-worker-and-the-physical-web/)
+
 ## 1 min video? Sure!
 
 NoQueue allow a user to subscribe to the queue broadcasted by the beacon and 
